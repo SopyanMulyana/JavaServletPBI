@@ -1,0 +1,54 @@
+<html layout:decorator="layout">
+
+<div layout:fragment="content">
+	
+	<label for="topic">Filter</label>
+	<form method="post" name="comment_form" id="comment_form" action="/schedules/search" role="form">
+         <div class="input-group">
+             <input type="text" class="form-control" name="topic" placeholder="Search"/>
+             <div class="input-group-btn">
+             <button class="btn btn-default" type="submit">
+        		<i class="glyphicon glyphicon-search"></i>
+      		</button>
+      		</div>
+         </div>
+    </form>
+    
+    <table class="table table-striped" id="schedules_list">
+        <thead>
+        <tr>
+            <th>Topic</th>
+            <th>Date</th>
+            <th>Action</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr data-th-each="schedule : ${schedules}">
+            <td class="message" data-th-text="${schedule.topic}"></td>
+            <td class="message" data-th-text="${schedule.date}"></td>
+
+            <td>
+                <a th:href="@{'/schedules/{id}/delete'(id=${schedule.id})}" class="delete" th:attr="name=${schedule.topic}">
+                        <span class="fa-stack ">
+                            <i class="glyphicon glyphicon-trash "></i>
+                        </span>
+                </a>
+            </td>
+
+            <td>
+                <a th:href="@{'/schedules/{id}/edit'(id=${schedule.id})}" class="edit" th:attr="name=${schedule.topic}">
+                    <span class="fa-stack">
+                        <i class="glyphicon glyphicon-edit"></i>
+                    </span>
+
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div style="float:right;">
+	<a class="btn btn-primary" href="/schedules/new">Add new schedule</a>
+	</div>
+    </div>
+    </html>

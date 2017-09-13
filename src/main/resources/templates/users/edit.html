@@ -1,0 +1,21 @@
+<html layout:decorator="layout">
+    <div layout:fragment="content">
+        <form method="post" name="comment_form" id="comment_form" action="/users/update" role="form">
+            <div class="form-group">
+                <label for="fullname">Full name</label>
+                <input class="form-control" name="fullname" th:value="${user.fullName}"/>
+                <label for="email">Email</label>
+                <input class="form-control" name="email" th:value="${user.email}"/>
+                <label for="grade">Grade</label>
+			      <select class="form-control" name="grade">
+			        <option value="JP">JP</option>
+			        <option value="PG">PG</option>
+			        <option value="AP">AP</option>
+			        <option value="AN">AN</option>
+			      </select>
+            </div>
+            <input type="hidden" id="user_id" rows="5" class="form-control" name="user_id" th:value="${user.id}"/>
+            <button type="submit" id="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</html>

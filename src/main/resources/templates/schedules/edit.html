@@ -1,0 +1,15 @@
+<html layout:decorator="layout">
+    <div layout:fragment="content">
+        <form method="post" name="comment_form" id="comment_form" action="/schedules/update" role="form">
+            <div class="form-group">
+                <label for="topic">Schedule</label>
+                <input class="form-control" name="topic" th:value="${schedule.topic}"/>
+                <label for="date">Date</label>
+                <input type='date' class="form-control" name="date" id="date" th:value="${schedule.date}"/>
+                
+            </div>
+            <input type="hidden" id="schedule_id" class="form-control" name="schedule_id" th:value="${schedule.id}"/>
+            <button type="submit" id="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</html>
